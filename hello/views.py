@@ -15,7 +15,7 @@ def hello_view(request):
     """)
 
 def hello2_view(request):
-    return render(request, 'hello2.html')
+    return render(request, 'szuflatka2/hello2.html')
 
 def adam_view(request):
     return HttpResponse("Witaj, Adam!")
@@ -31,7 +31,7 @@ def name_view(request, name):
 def name_view2(request, name):
     return render(
             request,
-            'name.html',
+            'hello/name.html',
         context={
             'name' :name
         }
