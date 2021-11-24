@@ -11,8 +11,7 @@ def index(request):
     # Turrnary operator
 
     is_it_christmas = False
-
-    if month == 11 and day == 24:
+    if (month == 12 and day == 25):
         is_it_christmas = True
     else:
         is_it_christmas = False
