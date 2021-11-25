@@ -9,5 +9,13 @@
 <body>
     <h2> To jest pierwsza strona</h2>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur cum, cupiditate deserunt ducimus eligendi exercitationem fuga illum, incidunt necessitatibus nisi odio officia pariatur quas quibusdam quis reprehenderit vitae. Aperiam, iure.
+
+<!--    statyczne linkowanie = zahardkodowanym urlem-->
+<!--    <p>Przejdź do strony <a href="/links/second/">drugiej</a>.</p>-->
+
+<!--    dynamiczne linkowanie-->
+    <p>Przejdź do strony <a href="{% url 'second' %}">drugiej</a>.</p>
+
+
 </body>
 </html>
