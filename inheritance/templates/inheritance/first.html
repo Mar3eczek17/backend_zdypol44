@@ -1,0 +1,18 @@
+{% extends 'inheritance/layout.html' %}
+
+
+{% block title %}
+{{ block.super}}
+Pierwszy
+ {% endblock %}
+
+
+{% block body %}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere laborum obcaecati officia pariatur provident tenetur totam voluptatum. Assumenda dicta dolorem et minus, perferendis quae similique sint sit soluta totam, veritatis!
+
+    <p>Przejdź do strony <a href="{% url 'inheritance:second' %}">druniej</a>.</p>
+
+{% include 'inheritance/second.html' %}
+ {% endblock %}
+
+

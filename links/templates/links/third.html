@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>To jest widok trzeci z parametrem {{value}}</h2>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium consectetur consequuntur ea eum explicabo in inventore iste iure minus molestias necessitatibus non recusandae, similique suscipit tempore unde, ut, voluptatum?
+
+<!--<p>Przejdz do strony pierwszej <a href="{% url 'first' %}">trzeci</a>.</p>-->
+<!--linki statyczne-->
+<p>Przejdz do strony pierwszej <a href="/links/third/abc">trzeciej</a>.</p>
+<!--linki dynamiczne-->
+<p>Przejdz do strony pierwszej <a href="{% url 'third' 'abc' %}">trzeciej</a>.</p>
+
+
+
+
+
+</body>
+</html>

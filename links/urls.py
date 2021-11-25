@@ -1,7 +1,10 @@
 from django.urls import path
 from links import views
 
+app_name = 'links'
+
 urlpatterns = [
-    path('mowa/', views.first, name="first"),
-    path('abc/', views.second, name='second'),  # nazwy mapowań
+    path('first/', views.first, name="first"),
+    path('second/', views.second, name='second'),  # nazwy mapowań
+    path('third/<str:value>', views.third, name='third'),  # nazwy mapowań
 ]
