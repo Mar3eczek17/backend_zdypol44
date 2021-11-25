@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{%  static 'isitmonday/css/style.css'%}">
-    <script src="{% static 'isitmonday/js/script.js' %}"></script>
+<!--    <script src="{% static 'isitmonday/js/script.js' %}"></script>-->
 </head>
 <body>
     {% if is_it_monday %}
-        <h1 style="color: green">TAK</h1>
+        <h1 style="color: blue">TAK</h1>
         <img src="{% static 'isitmonday/isitmonday.jpg' %}">
     {% else %}
-        <h1 style="color: black">NIE</h1>
+        <h1 style="color: blue"> NIE!  </h1>
+        <h3 style="color: blue"> Dziś nie jest poniedziałek!  </h3>
+        <img src="{% static 'isitmonday/jak_to_poniedzialek.jpg' %}">
     {% endif %}
 </body>
 </html>

@@ -1,7 +1,14 @@
 h1 {
     font-size: 90px;
-    font-weight: bold;
     text-align: center;
+    background-color: yellow;
+
+}
+
+h3 {
+font-size: 50px;
+text-align: center;
+background-color: yellow;
 }
 
 body {
@@ -9,4 +16,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 60%;
+  background-color: rgb(201, 76, 76);
 }
+

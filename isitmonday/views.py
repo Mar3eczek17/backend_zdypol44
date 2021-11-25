@@ -7,7 +7,7 @@ def index(request):
 
     is_it_monday = False
 
-    if date.today().weekday() == 1:  # 0 = Monday, 1 = Tues, etc.
+    if date.today().weekday() == 2:  # 0 = Monday, 1 = Tues, etc.
         # Which both have a weekday and isoweekday methods.
         # weekday count from Monday = 0,
         # while isoweekday count from Monday = 1:
