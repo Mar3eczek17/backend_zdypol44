@@ -26,4 +26,5 @@ urlpatterns = [
     path('draw/', include('draw.urls')),
     path('links/', include('links.urls')),
     path('inheritance/', include('inheritance.urls')),
+    path('mem/', include('mem.urls')),
 ]
