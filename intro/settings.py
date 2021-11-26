@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'links',
     'inheritance',
     'mem',
+    'new',
 ]
 
 MIDDLEWARE = [
