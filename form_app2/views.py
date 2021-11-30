@@ -11,10 +11,10 @@ def register(request):
 
 def tasks_list(request):
     task = request.GET.get('task')
-
     if task:
         TASKS.append(task)
 
+        # return redirect('form_app2:tasks-list')  //przekierowanie robimy w widoku
     return render(
         request,
         'form_app/register.html',
