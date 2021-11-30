@@ -5,10 +5,65 @@
     <title>Title</title>
 </head>
 <body>
-<ol>
+    <ol>
+        {% for item in fruits %}
+        <li>{{ item }}</li>
+        {%  endfor %}
+    </ol>
+
+    {# Komentarz #}
+{% comment %}
+    Komentarz wielolinijkowy
+{% abc %}
+{% endcomment %}
+
+    {% comment %}
+{{ len(fruits) }}
+    {{ ",".join(fruits) }}
+{% endcomment %}
+
+    <p>Lista: {{ fruits }}</p>
+    <p>Długość listy to: {{ fruits|length }}</p>
+    <p>Elementy listy to: {{ fruits|join:", "}} </p>
+    <p>{{ 4|add:2}}</p>
+    <p>{{ fruits|length|add:2 }}</p>
+
+    <p>{{ fruit|upper }}</p>
+    <p>{{ fruit|capfirst }}</p>
+    <p>{{ fruit|cut:'a'}}</p>
+
+    {{ text }}
+    {{ text|safe }}
+
+    {% comment %}
+        {% for idx, item in enumerate(fruits) %}
+            {{ idx }}
+        {% endfor %}
+    {% endcomment %}
+
+    <ul>
     {% for item in fruits %}
-    <li>{{ item }}</li>
-    {%  endfor %}
-</ol>
+        <li> {{ item  }}</li>
+        {{forloop}}
+        <div>{{forloop.counter0 }}</div>
+        {% endfor %}
+        </ul>
+
+    {% comment %}
+    Poprzez notacje z kropką odwołujemy się do:
+        1. atrybutów obiektu
+        2. indeksów
+        3. kluczy
+    {% endcomment %}
+
+    {# Atrybut obiektu #}
+    {{ dog.name }}
+
+    {# Indeks #}
+{{ fruits.2 }}
+
+{# Klucz #}
+{{ passenger.name }} {{passenger.age }}
+
 </body>
 </html>
