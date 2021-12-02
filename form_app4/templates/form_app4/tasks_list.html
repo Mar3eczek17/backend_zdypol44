@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista zadań</title>
+</head>
+<body>
+<button>
+    <a href="{% url 'form_app4:register' %}"> Dodaj zadanie </a></button>
+    <ul>
+    {% for task in tasks %}
+    <li>{{ task }}</li>
+    {% endfor %}
+        </ul>
+
+</body>
+</html>
