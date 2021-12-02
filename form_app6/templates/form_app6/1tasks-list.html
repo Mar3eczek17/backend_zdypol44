@@ -1,0 +1,27 @@
+{% extends "form_app6/layout.html" %}
+
+
+{%block title %}
+Rejestracja zadania
+{% endblock %}
+
+
+{%block body %}
+<!--7 dodaj zadanie-->
+<a href="{% url 'form_app6:register' %}"></a> <button>Dodaj zadanie</button>
+
+<!--wyswietla nam na podstawie listy-->
+<ul>
+{% for task in tasks%}
+    <li><a href="{% url 'form_app6:update' task.id %}">{{task.text}}</a>
+<!--        krok 1 przycisku delete (typ blokowy)-->
+        <form action="{% url 'form_app6:delete' task.id %}" method="post" style="display: inline;">{% csrf_token %}<input type="submit" value="Usuń"></form>
+    </li>
+<!--    rzycisk delete dla kazdego naszego elementu - metoda post trzeba uzyc formularza
+formularz jednoprzyciskowy wewnatrz elementu list item-->
+<!--    trzeba dopisac action na samym koncu aby przekierowalo-->
+{% endfor%}
+    </ul>
+{% endblock %}
+
+

@@ -1,0 +1,17 @@
+{% extends "form_app6/layout.html" %}
+
+{% block title %}
+    Lista zadań
+{% endblock %}
+
+{% block body %}
+        <a href="{% url 'form_app6:register' %}"><button>Dodaj zadanie</button></a>
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    <a href="{% url 'form_app6:update' task.id %}">{{ task.text }}</a>
+                    <form action="{% url 'form_app6:delete' task.id %}" method="post" style="display: inline;">{% csrf_token %}<input type="submit" value="Usuń"></form>
+                </li>
+            {% endfor %}
+        </ul>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "form_app6/layout.html" %}
+
+
+{%block title %}
+Aktualizacja zadania
+{% endblock %}
+
+
+{%block body %}
+<h3>Modyfikacja zadania numer {{ task.id }}</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="task" value="{{task.text}}">
+    <input type="submit" value="Aktualizuj">
+</form>
+
+
+{% endblock %}
