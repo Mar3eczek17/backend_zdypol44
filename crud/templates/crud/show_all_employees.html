@@ -1,0 +1,27 @@
+{% extends 'crud/base.html' %}
+
+{% block content %}
+  <table border="solid">
+    <tr>
+      <th>Name</th>
+      <th>Salary</th>
+      <th>Action</th>
+    </tr>
+
+    <tbody>
+      {% if employees %}
+      {% for e in employees %}
+      <tr>
+        <td>{{ e.name }}</td>
+        <td>{{ e.salary }}</td>
+        <td>
+          <a href="{% url 'crud:edit_employee' e.id %}">Edit</a>
+          <a href="{% url 'crud:delete_employee' e.id %}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+
+{% endblock %}

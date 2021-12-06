@@ -1,0 +1,23 @@
+{% extends "form_app8/base.html" %}
+
+{% block title %}
+    Rejestracja zadania
+{% endblock %}
+
+{% block body %}
+    <form action="" method="post">
+
+        <label for="task_name">Nazwa Zadanie: </label>
+        <div class="col-6">
+            <input class="form-control" type="text" name="task_name" id="task_name" required>
+        </div>
+
+
+        <label for="task_price">Cena Zadania: </label>
+        <div class="col-6">
+            <input class="form-control" type="number" name="task_price"  id="task_price" required>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Zarejestruj</button>
+    </form>
+{% endblock %}

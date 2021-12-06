@@ -17,7 +17,7 @@ Rejestracja zadania
 <!--        krok 1 przycisku delete (typ blokowy)-->
         <form action="{% url 'form_app6:delete' task.id %}" method="post" style="display: inline;">{% csrf_token %}<input type="submit" value="Usuń"></form>
     </li>
-<!--    rzycisk delete dla kazdego naszego elementu - metoda post trzeba uzyc formularza
+<!--    przycisk delete dla kazdego naszego elementu - metoda post trzeba uzyc formularza
 formularz jednoprzyciskowy wewnatrz elementu list item-->
 <!--    trzeba dopisac action na samym koncu aby przekierowalo-->
 {% endfor%}

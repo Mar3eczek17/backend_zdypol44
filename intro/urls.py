@@ -36,4 +36,6 @@ urlpatterns = [
     path('hello_world/', include('hello_world.urls')),
     path('form_app6/', include('form_app6.urls')),
     path('form_app7/', include('form_app7.urls')),
+    path('crud/', include('crud.urls')),
+    path('form_app8/', include('form_app8.urls')),
 ]

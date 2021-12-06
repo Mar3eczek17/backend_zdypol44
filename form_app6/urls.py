@@ -10,4 +10,6 @@ urlpatterns = [
     path('update/<int:task_id>/', views.update, name='update'),
     # krok2
     path('delete/<int:task_id>/', views.delete, name='delete'),
+    # krok 2 dorabianie przycisku wyczyść
+    path('clear/<int:task_id>/', views.clear, name='clear'),
 ]
