@@ -5,17 +5,20 @@
 {% endblock %}
 
 {% block body %}
-    <form action="" method="post">
+    <a href="{% url 'form_app8:tasks-list' %}"><button>All Tasks</button></a>
+
+    <form action="{% url 'form_app8:register' %}" method="post">
 
         <label for="task_name">Nazwa Zadanie: </label>
+        {% csrf_token %}
         <div class="col-6">
             <input class="form-control" type="text" name="task_name" id="task_name" required>
         </div>
 
-
-        <label for="task_price">Cena Zadania: </label>
+        <label for="task_salary">Cena Zadania: </label>
+        {% csrf_token %}
         <div class="col-6">
-            <input class="form-control" type="number" name="task_price"  id="task_price" required>
+            <input class="form-control" type="number" name="task_salary"  id="task_salary" required>
         </div>
 
         <button class="btn btn-primary" type="submit">Zarejestruj</button>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz 1</title>
+    <script>
+        function validate() {
+            var name = document.getElementById("name").value
+            if (name.includes("$")) {
+                alert("zła wartość w polu name (usun zanka '$')");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form method="POST" onsubmit="return validate();">
+        {% csrf_token %}
+        <label>Imię:<input type="text" name="name" id="name" required></label>
+        <label>Email:<input type="email" name="email"></label>
+        <label>Kategoria:<select name="category">
+            <option value="question">Pytanie</option>
+            <option value="other">Inne</option>
+        </select></label>
+        <label>Temat<input type="text" name="subject"></label>
+        <label>Treść<textarea name="body" cols="40" rows="10"></textarea></label>
+        <label>Ulubiona data<input type="date" name="date"></label>
+        <label>Ulubiona godzina<input type="time" name="time"></label>
+        <input type="submit" value="Wyślij">
+    </form>
+</body>
+</html>

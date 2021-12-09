@@ -1,0 +1,104 @@
+^C(venv) (base) marek@marek-HP-ProBook-450-G1:~/PycharmProjects/backend_zdypol44$ python manage.py shell
+Python 3.8.10 (default, Sep 28 2021, 16:10:42)
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from relations.models import Framework, Language
+>>> python = Language.objects.create(name="python")
+>>> django = Framework.objects.create(name="django", Language=python)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/query.py", line 451, in create
+    obj = self.model(**kwargs)
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/base.py", line 503, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: Framework() got an unexpected keyword argument 'Language'
+>>> flask = Framework.objects.create(name="flask", Language=python)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/query.py", line 451, in create
+    obj = self.model(**kwargs)
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/base.py", line 503, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: Framework() got an unexpected keyword argument 'Language'
+>>> flask = Framework.objects.create(name="flask", language=python)
+>>> bottel = Framework.objects.create(name="bottel", language=python)
+>>> java = Language()
+>>> java.name = "java"
+>>> java.save()
+>>> java
+<Language: java>
+>>> sprong = Framework(name="spring", language=jave)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'jave' is not defined
+>>> sprong = Framework(name="spring", language=java)
+>>> spring.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'spring' is not defined
+>>> python = Language.objects.get(name="python")
+>>> python
+<Language: python>
+>>> dir(python)
+['DoesNotExist', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_check_column_name_clashes', '_check_constraints', '_check_default_pk', '_check_field_name_clashes', '_check_fields', '_check_id_field', '_check_index_together', '_check_indexes', '_check_local_fields', '_check_long_column_names', '_check_m2m_through_same_relationship', '_check_managers', '_check_model', '_check_model_name_db_lookup_clashes', '_check_ordering', '_check_property_name_related_field_accessor_clashes', '_check_single_primary_key', '_check_swappable', '_check_unique_together', '_do_insert', '_do_update', '_get_FIELD_display', '_get_expr_references', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_val', '_get_unique_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_prepare_related_fields_for_save', '_save_parents', '_save_table', '_set_pk_val', '_state', 'check', 'clean', 'clean_fields', 'date_error_message', 'delete', 'framework_set', 'from_db', 'full_clean', 'get_deferred_fields', 'id', 'name', 'objects', 'pk', 'prepare_database_save', 'refresh_from_db', 'save', 'save_base', 'serializable_value', 'unique_error_message', 'validate_unique']
+>>> django
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'django' is not defined
+>>> django.framework_set
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'django' is not defined
+>>> python.framework_set
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x7f3ffceeffd0>
+>>> python.frmaework_set.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Language' object has no attribute 'frmaework_set'
+>>> python.framework_set.first()
+<Framework: flask>
+>>> django = Framework.objects.create(name="django", Language=python)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/query.py", line 451, in create
+    obj = self.model(**kwargs)
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/base.py", line 503, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: Framework() got an unexpected keyword argument 'Language'
+>>> django = Framework.objects.create(name="django", language=python)
+>>> Framework(language__name="python")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/base.py", line 503, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: Framework() got an unexpected keyword argument 'language__name'
+>>> Framework.objects.filter(language__name="python")
+<QuerySet [<Framework: flask>, <Framework: bottel>, <Framework: django>]>
+>>> Language.framework_set.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ReverseManyToOneDescriptor' object has no attribute 'all'
+>>> java.framework_set.all()
+<QuerySet []>
+>>> spring = Framework(name="spring", language=java)
+>>> spring.save()
+>>> java.framework_set.all()
+<QuerySet [<Framework: spring>]>
+>>> java.objects
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/marek/PycharmProjects/backend_zdypol44/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 179, in __get__
+    raise AttributeError("Manager isn't accessible via %s instances" % cls.__name__)
+AttributeError: Manager isn't accessible via Language instances
+>>> Language.objects.all()
+<QuerySet [<Language: python>, <Language: java>]>
+>>> python.framework_set.all()
+<QuerySet [<Framework: flask>, <Framework: bottel>, <Framework: django>]>
+>>>

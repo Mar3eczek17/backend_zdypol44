@@ -5,7 +5,13 @@
 {% endblock %}
 
 {% block body %}
-    <a href="#"><button>Home Page/Dodaj zadanie</button></a>
+    <a href="{% url 'form_app8:register' %}"><button>Home Page</button></a>
+
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <a href="{% url 'form_app8:update' task.id %}">{{ task.text }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
-</body>
-</html>

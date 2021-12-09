@@ -8,6 +8,7 @@ from django.views.decorators.http import require_http_methods
 from django.shortcuts import get_object_or_404
 
 
+
 # Create your views here.
 def register(request): # Creat
     # print(dir(request)) - request potrafi wiele rzeczy

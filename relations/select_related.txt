@@ -1,0 +1,107 @@
+(venv) (base) marek@marek-HP-ProBook-450-G1:~/PycharmProjects/backend_zdypol44$ python manage.py shell
+Python 3.8.10 (default, Sep 28 2021, 16:10:42)
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>>
+>>>
+>>> from relations.models import Framework
+>>> f = Framework.objects.all()
+>>> f
+<QuerySet [<Framework: flask>, <Framework: bottel>, <Framework: django>, <Framework: spring>]>
+>>> f = f[0]
+>>> f
+<Framework: flask>
+>>> dir(f)
+['DoesNotExist', 'MultipleObjectsReturned', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setstate__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_check_column_name_clashes', '_check_constraints', '_check_default_pk', '_check_field_name_clashes', '_check_fields', '_check_id_field', '_check_index_together', '_check_indexes', '_check_local_fields', '_check_long_column_names', '_check_m2m_through_same_relationship', '_check_managers', '_check_model', '_check_model_name_db_lookup_clashes', '_check_ordering', '_check_property_name_related_field_accessor_clashes', '_check_single_primary_key', '_check_swappable', '_check_unique_together', '_do_insert', '_do_update', '_get_FIELD_display', '_get_expr_references', '_get_next_or_previous_by_FIELD', '_get_next_or_previous_in_order', '_get_pk_val', '_get_unique_checks', '_meta', '_perform_date_checks', '_perform_unique_checks', '_prepare_related_fields_for_save', '_save_parents', '_save_table', '_set_pk_val', '_state', 'check', 'clean', 'clean_fields', 'date_error_message', 'delete', 'from_db', 'full_clean', 'get_deferred_fields', 'id', 'language', 'language_id', 'name', 'objects', 'pk', 'prepare_database_save', 'refresh_from_db', 'save', 'save_base', 'serializable_value', 'unique_error_message', 'validate_unique']
+>>> f
+<Framework: flask>
+>>> f.language_id
+2
+>>> f.language_id
+2
+>>> l = f.language
+>>> l
+<Language: python>
+>>> l.name
+'python'
+>>> l.id
+2
+>>> f = Framework.objects.all()
+>>> print(f.query)
+SELECT "relations_framework"."id", "relations_framework"."name", "relations_framework"."language_id" FROM "relations_framework"
+>>> f[0].language
+<Language: python>
+>>> print(f[0].language.query)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Language' object has no attribute 'query'
+>>> from relations.models import Language
+>>> p = Language.objects.get(name="python")
+>>> p
+<Language: python>
+>>> print(p.framework.set)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Language' object has no attribute 'framework'
+>>> print(p.framework_set.all().query)
+SELECT "relations_framework"."id", "relations_framework"."name", "relations_framework"."language_id" FROM "relations_framework" WHERE "relations_framework"."language_id" = 2
+>>> f = Framwork.objects.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Framwork' is not defined
+>>> f = Framework.objects.all()
+>>> f
+<QuerySet [<Framework: flask>, <Framework: bottel>, <Framework: django>, <Framework: spring>]>
+>>> for framework in f:
+... print(framework.language.name)
+  File "<console>", line 2
+    print(framework.language.name)
+    ^
+IndentationError: expected an indented block
+>>> for framework in f:
+... print(framework.language.name)
+  File "<console>", line 2
+    print(framework.language.name)
+    ^
+IndentationError: expected an indented block
+>>> for framework in f:
+... print(framework.language.name)
+  File "<console>", line 2
+    print(framework.language.name)
+    ^
+IndentationError: expected an indented block
+>>> for framework in f:
+... print(framework.language.name)
+  File "<console>", line 2
+    print(framework.language.name)
+    ^
+IndentationError: expected an indented block
+>>> from relations.models import Language
+>>>
+>>>
+>>>
+>>> f = Framework.objects.select_related()
+>>>
+>>> print(f.query)
+SELECT "relations_framework"."id", "relations_framework"."name", "relations_framework"."language_id", "relations_language"."id", "relations_language"."name" FROM "relations_framework" INNER JOIN "relations_language" ON ("relations_framework"."language_id" = "relations_language"."id")
+>>> f
+<QuerySet [<Framework: flask>, <Framework: bottel>, <Framework: django>, <Framework: spring>]>
+>>> f[0]
+<Framework: flask>
+>>> f[0].language
+<Language: python>
+>>> f[0].language.name
+'python'
+>>> f[0].language.id
+2
+>>> f = Framework.objects.select_related('language')
+>>> print(f.query)
+SELECT "relations_framework"."id", "relations_framework"."name", "relations_framework"."language_id", "relations_language"."id", "relations_language"."name" FROM "relations_framework" INNER JOIN "relations_language" ON ("relations_framework"."language_id" = "relations_language"."id")
+>>>
+>>>
+>>>
+>>>
+KeyboardInterrupt
+>>>
+[4]+  Stopped                 python manage.py shell
