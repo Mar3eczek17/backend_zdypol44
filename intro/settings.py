@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    'django.contrib.sessions', # obsluga ciasteczek
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hello',
@@ -59,11 +59,13 @@ INSTALLED_APPS = [
     'relations',
     'formapp',
     'viewapp',
+    'auth_user',
+    'uwierzytelnienie',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware', #obsługa ciasteczek
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware', #sprawdza czy prszyszlo metoda post
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -145,3 +147,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/uwierzytelnienie/home/'
+LOGOUT_REDIRECT_URL = '/uwierzytelnienie/home/'

@@ -1,14 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import HttpResponse
 from django.views import View
 from viewapp.models import Person
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView
+from viewapp.forms import PersonForm
 
 
 # Widoki generyczne
 from django.views.generic import TemplateView
-
+from django.views.generic import DetailView
+from django.views.generic.edit import CreateView
 
 
 # funkcjon based view (Widok funkcyjny)
@@ -99,3 +100,57 @@ class PersonView(View):
 # Widok generyczny
 class PersonDetailView(DetailView):
     model = Person
+
+
+# C = (CRUD)
+
+# Widok funkcyjny
+def create_person(request):
+    # form = PersonForm(request.POST or None)
+
+    if request.method == "GET":
+        form = PersonForm()
+
+        return render(
+            request,
+            'viewapp/create-person.html',
+            context={
+                'form': form,
+            }
+        )
+
+    elif request.method == "POST":
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+        return redirect('viewapp:create-person')
+
+
+
+
+# Widok klasowy
+class PersonCreateView(View):
+    def get(self, request):
+        form = PersonForm()
+
+        return render(
+            request,
+            'viewapp/create-person.html',
+            context={
+                'form': form,
+            }
+        )
+
+    def post(self, request):
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+        return redirect('viewapp:create-person2')
+
+
+# Widok generyczny
+class PersonGenericCreateView(CreateView):
+    model = Person
+    fields = '__all__'
